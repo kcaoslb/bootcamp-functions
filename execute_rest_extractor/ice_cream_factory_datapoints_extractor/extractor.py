@@ -77,7 +77,7 @@ def run_extractor(
     config.backfill.enabled = str(os.getenv("BACKFILL_ENABLED", config.backfill.enabled)).lower() == "true"
     config.backfill.history_days = int(os.getenv("BACKFILL_HISTORY_DAYS", config.backfill.history_days))
     if os.getenv("SITES"):
-        config.api.sites = ast.literal_eval(os.getenv("SITES"))
+        config.api.sites = os.getenv("SITES").split(',') #ast.literal_eval(os.getenv("SITES"))
 
     logging.basicConfig(level=logging.INFO)
     logging.info("Starting Ice Cream Factory datapoints extractor")
